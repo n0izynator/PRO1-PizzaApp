@@ -23,5 +23,17 @@ namespace PizzaApp.Controllers
         {
             return Ok(_context.Pizza.ToList());
         }
+
+        [HttpGet("{slug}")]
+        public IActionResult getPizza(string slug)
+        {
+            var pizza = _context.Pizza.FirstOrDefault(p => p.Slug == slug);
+            if (pizza == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(pizza);
+        }
     }
 }
