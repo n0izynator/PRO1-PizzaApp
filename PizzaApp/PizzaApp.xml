@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PizzaApp</name>
+    </assembly>
+    <members>
+        <member name="M:PizzaApp.Controllers.SkladnikController.getSladniks">
+            <summary>
+            Metoda zwraca dane dotyczace składnikow
+            </summary>
+            <returns>Lista obeitktów reprezentujacych skladnik</returns>
+        </member>
+    </members>
+</doc>

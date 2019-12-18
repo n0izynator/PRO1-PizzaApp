@@ -19,6 +19,11 @@ namespace PizzaApp.Controllers
         }
 
 
+        /// <summary>
+        /// Metoda zwraca dane dotyczace składnikow
+        /// </summary>
+        /// <returns>Lista obeitktów reprezentujacych skladnik</returns>
+
         [HttpGet]
         public IActionResult getSladniks()
         {
