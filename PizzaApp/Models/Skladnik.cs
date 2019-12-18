@@ -11,7 +11,7 @@ namespace PizzaApp.Models
         }
 
         public int IdSkladnik { get; set; }
-        public int Nazwa { get; set; }
+        public string Nazwa { get; set; }
         public int TypIdTyp { get; set; }
         public int Cena { get; set; }
 

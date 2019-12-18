@@ -11,7 +11,7 @@ namespace PizzaApp.Models
         }
 
         public int IdTyp { get; set; }
-        public int Nazwa { get; set; }
+        public string Nazwa { get; set; }
 
         public virtual ICollection<Skladnik> Skladnik { get; set; }
     }

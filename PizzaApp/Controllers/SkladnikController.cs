@@ -10,34 +10,32 @@ namespace PizzaApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PizzaController : ControllerBase
+    public class SkladnikController : ControllerBase
     {
         private s16682Context _context;
-        public PizzaController(s16682Context context)
+        public SkladnikController(s16682Context context)
         {
             _context = context;
         }
 
+
         [HttpGet]
-        public IActionResult getPizzas()
+        public IActionResult getSladniks()
         {
-            return Ok(_context.Pizza.ToList());
+            return Ok(_context.Skladnik.ToList());
         }
 
-        [HttpGet("{slug}")]
-        public IActionResult getPizza(string slug)
+        [HttpGet("{id:int}")]
+        public IActionResult getSkladnik(int id)
         {
-            var pizza = _context.Pizza.FirstOrDefault(p => p.Slug == slug);
-            if (pizza == null)
+            var skladnik = _context.Skladnik.FirstOrDefault(s => s.IdSkladnik == id);
+
+            if (skladnik == null)
             {
                 return NotFound();
             }
 
-            return Ok(pizza);
+            return Ok(skladnik);
         }
-
-
-
-
     }
 }
