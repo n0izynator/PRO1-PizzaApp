@@ -42,5 +42,45 @@ namespace PizzaApp.Controllers
 
             return Ok(skladnik);
         }
+
+        [HttpPost]
+        public IActionResult Create(Skladnik newSkladnik)
+        {
+            _context.Skladnik.Add(newSkladnik);
+            _context.SaveChanges();
+
+            return StatusCode(201, newSkladnik);
+        }
+
+        [HttpPut]
+        public IActionResult Update(Skladnik updatedSkladnik)
+        {
+
+            if (_context.Skladnik.Count(Skladnik => Skladnik.IdSkladnik == updatedSkladnik.IdSkladnik) == 0)
+            {
+                return NotFound();
+            }
+
+            _context.Skladnik.Attach(updatedSkladnik);
+            _context.Entry(updatedSkladnik).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok(updatedSkladnik);
+        }
+
+        [HttpDelete("{idSkladnik:int}")]
+        public IActionResult Delete(int idSkladnik)
+        {
+            var skladnik = _context.Skladnik.FirstOrDefault(s => s.IdSkladnik == idSkladnik);
+            if (skladnik == null)
+            {
+                return NotFound();
+            }
+
+            _context.Skladnik.Remove(skladnik);
+            _context.SaveChanges();
+
+            return Ok(skladnik);
+        }
     }
 }

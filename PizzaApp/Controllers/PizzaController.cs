@@ -34,7 +34,47 @@ namespace PizzaApp.Controllers
             }
 
             return Ok(pizza);
-        } 
+        }
+
+        [HttpPost]
+        public IActionResult Create(Pizza newPizza)
+        {
+            _context.Pizza.Add(newPizza);
+            _context.SaveChanges();
+
+            return Ok(newPizza);
+        }
+
+        [HttpPut]
+        public IActionResult Update(Pizza updatedPizza)
+        {
+            if (_context.Pizza.Count(p => p.Slug == updatedPizza.Slug) == 0)
+            {
+                return NotFound();
+            }
+
+            _context.Pizza.Attach(updatedPizza);
+            //Nie dziala update, nie moze odwolac sie do State
+            //_context.Entry(updatedPizza).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.SaveChanges();
+
+            return Ok(updatedPizza);
+        }
+
+        [HttpDelete("{idPizza:Guid}")]
+        public IActionResult Delete(Guid idPizza)
+        {
+            var p = _context.Pizza.FirstOrDefault(t => t.IdPizza == idPizza);
+            if (p == null)
+            {
+                return NotFound();
+            }
+
+            _context.Pizza.Remove(p);
+            _context.SaveChanges();
+
+            return Ok(p);
+        }
 
     }
 }
