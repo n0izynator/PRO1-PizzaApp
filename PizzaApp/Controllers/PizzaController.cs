@@ -34,10 +34,7 @@ namespace PizzaApp.Controllers
             }
 
             return Ok(pizza);
-        }
-
-
-
+        } 
 
     }
 }

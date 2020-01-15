@@ -35,6 +35,11 @@ namespace PizzaApp.Models
             }
         }
 
+        internal object Entry(Pizza piz)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
